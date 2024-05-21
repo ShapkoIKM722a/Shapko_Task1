@@ -13,7 +13,7 @@ namespace Shapko_IKM722a_1
     public partial class Form1 : Form
     {
         private DateTime startTime;
-        private bool Mode; 
+        private bool Mode;
         private MajorWork MajorObject;
         public Form1()
         {
@@ -33,9 +33,9 @@ namespace Shapko_IKM722a_1
             MessageBox.Show("Програма почала роботу о " + startTime.ToString());
             MajorObject = new MajorWork();
             MajorObject.SetTime();
-            About A = new About(); 
+            About A = new About();
             A.tAbout.Start();
-            A.ShowDialog(); 
+            A.ShowDialog();
             MajorObject = new MajorWork();
             this.Mode = true;
         }
@@ -46,8 +46,9 @@ namespace Shapko_IKM722a_1
                 tbInput.Enabled = true;
                 tbInput.Focus();
                 tClock.Start();
-                bStart.Text = "Стоп"; 
+                bStart.Text = "Стоп";
                 this.Mode = false;
+                пускToolStripMenuItem.Text = "Стоп";
             }
             else
             {
@@ -58,6 +59,7 @@ namespace Shapko_IKM722a_1
                 MajorObject.Write(tbInput.Text);
                 MajorObject.Task();
                 label1.Text = MajorObject.Read();
+                пускToolStripMenuItem.Text = "Старт";
             }
         }
 
@@ -80,17 +82,62 @@ namespace Shapko_IKM722a_1
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-         
+
             DateTime endTime = DateTime.Now;
             TimeSpan duration = endTime - startTime;
             MessageBox.Show("Час роботи програми: " + duration.ToString(), "Час роботи програми");
-           /* string s;
-            s = (System.DateTime.Now - MajorObject.GetTime()).ToString();
-            MessageBox.Show(s, "Час роботи програми");
-            
-            DateTime endTime = DateTime.Now;
-            TimeSpan totalDuration = endTime - startTime;
-            MessageBox.Show("Загальний час роботи програми: " + totalDuration.ToString(), "Час роботи програми");*/
+
+        }
+
+        private void вихідToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About A = new About();
+            A.ShowDialog();
+        }
+
+        private void зберегтиЯкToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sfdSave.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(sfdSave.FileName);
+            }
+        }
+
+        private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ofdOpen.ShowDialog() == DialogResult.OK)
+            { 
+                MessageBox.Show(ofdOpen.FileName);
+            }
+        }
+
+        private void проНакопичувачіToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string[] disks = System.IO.Directory.GetLogicalDrives(); 
+            string disk = "";
+            for (int i = 0; i < disks.Length; i++)
+            {
+                try
+                {
+                    System.IO.DriveInfo D = new System.IO.DriveInfo(disks[i]);
+                    disk += D.Name + "-" + D.TotalSize.ToString() + "-" + D.TotalFreeSpace.ToString()
+                    + (char)13;
+                   
+                }
+                catch
+                {
+                    disk += disks[i] + "- не готовий" + (char)13; 
+                   
+}
+            }
+
+            MessageBox.Show(disk, "Накопичувачі");
         }
     }
+
 }
