@@ -12,7 +12,9 @@ namespace Shapko_IKM722a_1
 {
     public partial class Form1 : Form
     {
-        private bool Mode; // Режим дозволу / заборони введення даних
+        private DateTime startTime;
+        private bool Mode; 
+        private MajorWork MajorObject;
         public Form1()
         {
             InitializeComponent();
@@ -21,31 +23,41 @@ namespace Shapko_IKM722a_1
         private void tClock_Tick(object sender, EventArgs e)
         {
             tClock.Stop();
-            MessageBox.Show("Минуло 25 секунд", "Увага");// Виведення повідомлення на екран "Минуло 25 секунд" 
+            MessageBox.Show("Минуло 25 секунд", "Увага");
             tClock.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            startTime = DateTime.Now;
+            MessageBox.Show("Програма почала роботу о " + startTime.ToString());
+            MajorObject = new MajorWork();
+            MajorObject.SetTime();
+            About A = new About(); 
+            A.tAbout.Start();
+            A.ShowDialog(); 
+            MajorObject = new MajorWork();
             this.Mode = true;
         }
-
         private void bStart_Click(object sender, EventArgs e)
         {
             if (Mode)
             {
-                tbInput.Enabled = true;// Режим дозволу введення
+                tbInput.Enabled = true;
                 tbInput.Focus();
                 tClock.Start();
-                bStart.Text = "Стоп"; // зміна тексту на кнопці на "Стоп"
+                bStart.Text = "Стоп"; 
                 this.Mode = false;
             }
             else
             {
-                tbInput.Enabled = false;// Режим заборони введення
+                tbInput.Enabled = false;
                 tClock.Stop();
-                bStart.Text = "Пуск";// зміна тексту на кнопці на "Пуск"
+                bStart.Text = "Пуск";
                 this.Mode = true;
+                MajorObject.Write(tbInput.Text);
+                MajorObject.Task();
+                label1.Text = MajorObject.Read();
             }
         }
 
@@ -64,6 +76,21 @@ namespace Shapko_IKM722a_1
                 tClock.Start();
                 e.KeyChar = (char)0;
             }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+         
+            DateTime endTime = DateTime.Now;
+            TimeSpan duration = endTime - startTime;
+            MessageBox.Show("Час роботи програми: " + duration.ToString(), "Час роботи програми");
+           /* string s;
+            s = (System.DateTime.Now - MajorObject.GetTime()).ToString();
+            MessageBox.Show(s, "Час роботи програми");
+            
+            DateTime endTime = DateTime.Now;
+            TimeSpan totalDuration = endTime - startTime;
+            MessageBox.Show("Загальний час роботи програми: " + totalDuration.ToString(), "Час роботи програми");*/
         }
     }
 }
