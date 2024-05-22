@@ -33,6 +33,7 @@ namespace Shapko_IKM722a_1
             MessageBox.Show("Програма почала роботу о " + startTime.ToString());
             MajorObject = new MajorWork();
             MajorObject.SetTime();
+            MajorObject.Modify = false;
             About A = new About();
             A.tAbout.Start();
             A.ShowDialog();
@@ -99,16 +100,8 @@ namespace Shapko_IKM722a_1
             About A = new About();
             A.ShowDialog();
         }
-
-        private void зберегтиЯкToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (sfdSave.ShowDialog() == DialogResult.OK)
-            {
-                MessageBox.Show(sfdSave.FileName);
-            }
-        }
-
-        private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
+        
+            private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ofdOpen.ShowDialog() == DialogResult.OK)
             { 
@@ -133,10 +126,21 @@ namespace Shapko_IKM722a_1
                 {
                     disk += disks[i] + "- не готовий" + (char)13; 
                    
-}
+                }
             }
 
             MessageBox.Show(disk, "Накопичувачі");
+        }
+
+        private void зберегтиЯкToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sfdSave.ShowDialog() == DialogResult.OK)
+            {
+                {
+                    MajorObject.WriteSaveFileName(sfdSave.FileName);
+                    MajorObject.SaveToFile();
+                }
+            }
         }
     }
 
