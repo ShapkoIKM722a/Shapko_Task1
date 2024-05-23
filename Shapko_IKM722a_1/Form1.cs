@@ -103,9 +103,10 @@ namespace Shapko_IKM722a_1
 
         private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ofdOpen.ShowDialog() == DialogResult.OK)
+            if (ofdOpen.ShowDialog() == DialogResult.OK) 
             {
-                MessageBox.Show(ofdOpen.FileName);
+                MajorObject.WriteOpenFileName(ofdOpen.FileName); 
+                MajorObject.ReadFromFile(dgwOpen); 
             }
         }
 
@@ -163,6 +164,11 @@ namespace Shapko_IKM722a_1
                 if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА",
                 MessageBoxButtons.YesNo) == DialogResult.No)
                     e.Cancel = true; 
+        }
+
+        private void bSearch_Click(object sender, EventArgs e)
+        {
+            MajorObject.Find(tbSearch.Text);
         }
     }
 }
