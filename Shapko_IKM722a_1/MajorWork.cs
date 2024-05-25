@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace Shapko_IKM722a_1
 {
@@ -16,6 +17,12 @@ namespace Shapko_IKM722a_1
         private string Result { get; set; }
         public bool Modify;
         private int Key;
+
+        public Stack myStack = new Stack();
+        public string[] myArr = new string[100];
+
+        public Queue myQueue = new Queue();
+        public string[] smyQueue = new string[100];
 
         private string SaveFileName;
         private string OpenFileName;

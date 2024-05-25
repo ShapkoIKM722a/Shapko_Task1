@@ -57,20 +57,39 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.LabelStack = new System.Windows.Forms.Label();
+            this.StackText = new System.Windows.Forms.Label();
+            this.Stacktb = new System.Windows.Forms.TextBox();
+            this.Peek = new System.Windows.Forms.Button();
+            this.Pop = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.LabelQueue = new System.Windows.Forms.Label();
+            this.QueueText = new System.Windows.Forms.Label();
+            this.Queuetb = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.Dequeue = new System.Windows.Forms.Button();
+            this.Enqueue = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwOpen)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -116,7 +135,7 @@
             this.довідкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1061, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1539, 33);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -274,10 +293,11 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(0, 36);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(12, 36);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1049, 465);
+            this.tabControl1.Size = new System.Drawing.Size(1565, 523);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage1
@@ -289,32 +309,26 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1041, 432);
+            this.tabPage1.Size = new System.Drawing.Size(1557, 490);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Введення даних";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // statusStrip1
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1041, 432);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Робота з файлами";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Location = new System.Drawing.Point(3, 465);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1551, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // button1
+            // textBox1
             // 
-            this.button1.Location = new System.Drawing.Point(462, 244);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 33);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Пуск";
-            this.button1.UseVisualStyleBackColor = true;
+            this.textBox1.Location = new System.Drawing.Point(208, 170);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(612, 26);
+            this.textBox1.TabIndex = 2;
             // 
             // label2
             // 
@@ -325,28 +339,27 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "label2";
             // 
-            // textBox1
+            // button1
             // 
-            this.textBox1.Location = new System.Drawing.Point(208, 170);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(612, 26);
-            this.textBox1.TabIndex = 2;
+            this.button1.Location = new System.Drawing.Point(462, 244);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 33);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Пуск";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // tabPage2
             // 
-            this.button2.Location = new System.Drawing.Point(766, 121);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 32);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Пошук";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(700, 173);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(243, 26);
-            this.textBox2.TabIndex = 1;
+            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.textBox2);
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1557, 490);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Робота з файлами";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -358,20 +371,177 @@
             this.dataGridView1.Size = new System.Drawing.Size(551, 325);
             this.dataGridView1.TabIndex = 2;
             // 
-            // statusStrip1
+            // textBox2
             // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Location = new System.Drawing.Point(3, 401);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1035, 28);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
+            this.textBox2.Location = new System.Drawing.Point(700, 173);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(243, 26);
+            this.textBox2.TabIndex = 1;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(766, 121);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 32);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Пошук";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.splitContainer1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1557, 490);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Стек / Черга";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.LightGray;
+            this.splitContainer1.Panel1.Controls.Add(this.LabelStack);
+            this.splitContainer1.Panel1.Controls.Add(this.StackText);
+            this.splitContainer1.Panel1.Controls.Add(this.Stacktb);
+            this.splitContainer1.Panel1.Controls.Add(this.Peek);
+            this.splitContainer1.Panel1.Controls.Add(this.Pop);
+            this.splitContainer1.Panel1.Controls.Add(this.button3);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Silver;
+            this.splitContainer1.Panel2.Controls.Add(this.LabelQueue);
+            this.splitContainer1.Panel2.Controls.Add(this.QueueText);
+            this.splitContainer1.Panel2.Controls.Add(this.Queuetb);
+            this.splitContainer1.Panel2.Controls.Add(this.button6);
+            this.splitContainer1.Panel2.Controls.Add(this.Dequeue);
+            this.splitContainer1.Panel2.Controls.Add(this.Enqueue);
+            this.splitContainer1.Size = new System.Drawing.Size(1557, 490);
+            this.splitContainer1.SplitterDistance = 466;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // LabelStack
+            // 
+            this.LabelStack.AutoSize = true;
+            this.LabelStack.Location = new System.Drawing.Point(234, 297);
+            this.LabelStack.Name = "LabelStack";
+            this.LabelStack.Size = new System.Drawing.Size(51, 20);
+            this.LabelStack.TabIndex = 5;
+            this.LabelStack.Text = "label4";
+            // 
+            // StackText
+            // 
+            this.StackText.AutoSize = true;
+            this.StackText.Location = new System.Drawing.Point(234, 44);
+            this.StackText.Name = "StackText";
+            this.StackText.Size = new System.Drawing.Size(46, 20);
+            this.StackText.TabIndex = 4;
+            this.StackText.Text = "Стек";
+            // 
+            // Stacktb
+            // 
+            this.Stacktb.Location = new System.Drawing.Point(173, 118);
+            this.Stacktb.Name = "Stacktb";
+            this.Stacktb.Size = new System.Drawing.Size(177, 26);
+            this.Stacktb.TabIndex = 3;
+            // 
+            // Peek
+            // 
+            this.Peek.Location = new System.Drawing.Point(367, 189);
+            this.Peek.Name = "Peek";
+            this.Peek.Size = new System.Drawing.Size(89, 33);
+            this.Peek.TabIndex = 2;
+            this.Peek.Text = "Peek";
+            this.Peek.UseVisualStyleBackColor = true;
+            this.Peek.Click += new System.EventHandler(this.Peek_Click);
+            // 
+            // Pop
+            // 
+            this.Pop.Location = new System.Drawing.Point(218, 189);
+            this.Pop.Name = "Pop";
+            this.Pop.Size = new System.Drawing.Size(80, 33);
+            this.Pop.TabIndex = 1;
+            this.Pop.Text = "Pop";
+            this.Pop.UseVisualStyleBackColor = true;
+            this.Pop.Click += new System.EventHandler(this.Pop_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(77, 189);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(87, 33);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Push";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // LabelQueue
+            // 
+            this.LabelQueue.AutoSize = true;
+            this.LabelQueue.Location = new System.Drawing.Point(227, 297);
+            this.LabelQueue.Name = "LabelQueue";
+            this.LabelQueue.Size = new System.Drawing.Size(51, 20);
+            this.LabelQueue.TabIndex = 5;
+            this.LabelQueue.Text = "label4";
+            // 
+            // QueueText
+            // 
+            this.QueueText.AutoSize = true;
+            this.QueueText.Location = new System.Drawing.Point(227, 44);
+            this.QueueText.Name = "QueueText";
+            this.QueueText.Size = new System.Drawing.Size(55, 20);
+            this.QueueText.TabIndex = 4;
+            this.QueueText.Text = "Черга";
+            // 
+            // Queuetb
+            // 
+            this.Queuetb.Location = new System.Drawing.Point(168, 118);
+            this.Queuetb.Name = "Queuetb";
+            this.Queuetb.Size = new System.Drawing.Size(177, 26);
+            this.Queuetb.TabIndex = 3;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(368, 187);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 35);
+            this.button6.TabIndex = 2;
+            this.button6.Text = "Peek_q";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // Dequeue
+            // 
+            this.Dequeue.Location = new System.Drawing.Point(198, 187);
+            this.Dequeue.Name = "Dequeue";
+            this.Dequeue.Size = new System.Drawing.Size(90, 35);
+            this.Dequeue.TabIndex = 1;
+            this.Dequeue.Text = "Dequeue";
+            this.Dequeue.UseVisualStyleBackColor = true;
+            this.Dequeue.Click += new System.EventHandler(this.Dequeue_Click);
+            // 
+            // Enqueue
+            // 
+            this.Enqueue.Location = new System.Drawing.Point(34, 187);
+            this.Enqueue.Name = "Enqueue";
+            this.Enqueue.Size = new System.Drawing.Size(82, 35);
+            this.Enqueue.TabIndex = 0;
+            this.Enqueue.Text = "Enqueue";
+            this.Enqueue.UseVisualStyleBackColor = true;
+            this.Enqueue.Click += new System.EventHandler(this.Enqueue_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1061, 513);
+            this.ClientSize = new System.Drawing.Size(1539, 571);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.tbSearch);
             this.Controls.Add(this.bSearch);
@@ -395,6 +565,13 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,6 +615,20 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Label LabelStack;
+        private System.Windows.Forms.Label StackText;
+        private System.Windows.Forms.TextBox Stacktb;
+        private System.Windows.Forms.Button Peek;
+        private System.Windows.Forms.Button Pop;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label LabelQueue;
+        private System.Windows.Forms.Label QueueText;
+        private System.Windows.Forms.TextBox Queuetb;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button Dequeue;
+        private System.Windows.Forms.Button Enqueue;
     }
 }
 
