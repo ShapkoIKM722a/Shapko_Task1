@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Shapko_IKM722a_1
 {
@@ -14,7 +15,9 @@ namespace Shapko_IKM722a_1
     {
         private DateTime startTime;
         private bool Mode;
+        private SaveFileDialog sf;
         private MajorWork MajorObject;
+
 
         ToolStripLabel dateLabel;
         ToolStripLabel timeLabel;
@@ -126,13 +129,21 @@ namespace Shapko_IKM722a_1
             A.progressBar1.Hide();
             A.ShowDialog();
         }
-
+        private void зберегтиЯкToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sfdSave.ShowDialog() == DialogResult.OK)
+            {
+                MajorObject.WriteSaveFileName(sfdSave.FileName);
+                MajorObject.Generator();
+                MajorObject.SaveToFile();
+            }
+        }
         private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ofdOpen.ShowDialog() == DialogResult.OK) 
+            if (ofdOpen.ShowDialog() == DialogResult.OK)
             {
-                MajorObject.WriteOpenFileName(ofdOpen.FileName); 
-                MajorObject.ReadFromFile(dgwOpen); 
+                MajorObject.WriteOpenFileName(ofdOpen.FileName);
+                MajorObject.ReadFromFile(dgwOpen);
             }
         }
 
@@ -159,15 +170,7 @@ namespace Shapko_IKM722a_1
             MessageBox.Show(disk, "Накопичувачі");
         }
 
-        private void зберегтиЯкToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (sfdSave.ShowDialog() == DialogResult.OK)
-            {
-                MajorObject.WriteSaveFileName(sfdSave.FileName);
-                MajorObject.Generator();
-                MajorObject.SaveToFile();
-            }
-        }
+        
 
         private void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -189,7 +192,7 @@ namespace Shapko_IKM722a_1
             if (MajorObject.Modify)
                 if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА",
                 MessageBoxButtons.YesNo) == DialogResult.No)
-                    e.Cancel = true; 
+                    e.Cancel = true;
         }
 
         private void bSearch_Click(object sender, EventArgs e)
@@ -297,17 +300,17 @@ namespace Shapko_IKM722a_1
             else
             {
                 MajorObject.smyQueue[0] = null;
-               
+
                 for (int i = 0; i < MajorObject.smyQueue.Length - 1; i++)
                 {
                     MajorObject.smyQueue[i] = MajorObject.smyQueue[i + 1];
                 }
-                
+
                 if (MajorObject.myQueue.Count > 0)
                 {
                     MessageBox.Show("Dequeue " + MajorObject.myQueue.Dequeue());
                 }
-               
+
                 LabelQueue.Text = "";
                 for (int i = 0; i < MajorObject.smyQueue.Length - 1; i++)
                 {
@@ -324,5 +327,81 @@ namespace Shapko_IKM722a_1
                     MessageBox.Show("\nОчередь пустая!");
             }
         }
+
+        private void зберегтиЯкToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sf = new SaveFileDialog();
+
+            sf.Filter = @"Текстовий файл (*.txt)|*.txt|Текстові файли TXT(*.txt)|*.txt|CSV-файл (*.csv)|*.csv|Bin-файл (*.bin)|*.bin";
+
+            if (sf.ShowDialog() == DialogResult.OK)
+            {
+                MajorObject.WriteSaveTextFileName(sf.FileName);
+                MajorObject.SaveToTextFile(sf.FileName, dgwOpen);
+            }
+        }
+
+        private void зберегтиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.SaveTextFileNameExists())
+
+                MajorObject.SaveToTextFile(MajorObject.ReadSaveTextFileName(), dgwOpen);
+            else
+                зберегтиЯкToolStripMenuItem1_Click(sender, e);
+        }
+
+        private void відкритиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog();
+
+            o.Filter = @"Текстовий файл (*.txt)|*.txt|Текстовий файл TXT(*.txt)|*.txt|CSV-файл (*.csv)|*.csv|Bin-файл (*.bin)|*.bin";
+
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox1.Text = File.ReadAllText(o.FileName, Encoding.Default);
+            }
+        }
+        
+        private void tabPage1_TextChanged(object sender, EventArgs e)
+        {
+            this.Mode = true;
+        }
+        private void buttonПуск_Click(object sender, EventArgs e)
+        {
+            if (Mode)
+            {
+                textBox1.Enabled = true;
+                textBox1.Focus();
+                
+                button1.Text = "Стоп"; 
+                this.Mode = false;
+            }
+            else
+            {
+                textBox1.Enabled = false;
+                
+                button1.Text = "Пуск";
+                this.Mode = true;
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            tClock.Stop();
+            tClock.Start();
+            if ((e.KeyChar >= '0') & (e.KeyChar <= '9') | (e.KeyChar == (char)8))
+            {
+                return;
+            }
+            else
+            {
+                tClock.Stop();
+                MessageBox.Show("Неправильний символ", "Помилка");
+                tClock.Start();
+                e.KeyChar = (char)0;
+            }
+        }
+
+        
     }
 }
